@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 100px;
+            width: 100px;
+            background: #0098e5;
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    var oBox = document.getElementsByClassName('box')[0];
+    var body = document.getElementsByTagName('body')[0];
+    function bindEvent(ele){
+        var X,//鼠标距离屏幕左边的距离
+            Y,//鼠标距离屏幕顶部的距离
+            boxLeft,//所要移动的元素距离屏幕左边的距离
+            boxTop,//所要移动的元素距离屏幕上边的距离
+            disTop,//鼠标点击时距离元素上边的距离
+            disLeft,//鼠标点击时距离元素左边的距离
+            drag = false;
+        ele.onmousedown = function(e){
+            drag = true;//需要对鼠标按下进行判断，看是否有按下，不然鼠标可能是一直移动的，但没有拖拽
+            var e = e || window.event;
+            X = event.clientX;
+            Y = event.clientY;
+            boxLeft = ele.offsetLeft;
+            boxTop = ele.offsetTop;
+            disLeft = X - boxLeft;
+            disTop = Y - boxTop;
+        };
+        document.onmousemove = function(e){
+            var e = e || window.event;
+            if(drag){
+                ele.style.left = e.clientX - disLeft + 'px';
+                ele.style.top = e.clientY - disTop + 'px';
+            }
+           
+        };
+        ele.onmouseup = function(){
+            drag = false;
+        }
+    }
+    bindEvent(oBox);
+</script>
+</html>
