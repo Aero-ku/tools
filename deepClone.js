@@ -4,7 +4,7 @@ function deepClone (target, origin){
     for(var prop in origin){
         if(origin.hasOwnProperty(prop)){
             if(typeof origin[prop] == 'object'&& typeof origin[prop] != null){
-                if(Object.prototype.toString.call(origin[prop]) == '[object Object'){
+                if(Object.prototype.toString.call(origin[prop]) == '[object Object]'){
                     target[prop] = {}
                 } else {
                     target[prop] = []
