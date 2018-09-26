@@ -8,8 +8,8 @@
  */
 function Ajax(method, url, data, flag, succ, error) {
     var xhr = null;
-    if (window.XHRHttpRequest) {
-        xhr = new XHRHttpRequest();
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
     }       
     else {
         xhr = new ActiveXObject("Micrisoft.XHRHttp");
