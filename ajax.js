@@ -20,7 +20,7 @@ function Ajax(method, url, data, flag, succ, error) {
     }
     method = method.toUpperCase();
     if (method == 'GET') {
-        xhr.open(method, url + '?' + data, true)//true表示通过异步加载，false表示通过同步加载
+        xhr.open(method, url + '?' + data, flag)//true表示通过异步加载，false表示通过同步加载
         xhr.send();
     } else if (method == 'POST') {
         xhr.open(method, url, flag);
