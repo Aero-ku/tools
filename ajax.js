@@ -8,11 +8,15 @@
  */
 function Ajax(method, url, data, flag, succ, error) {
     var xhr = null;
+    /* window.XMLHttpRequest为window的一个属性，可用来区分浏览器，在Firefox，Opera，
+    safari，IE7.0, IE8.0这些浏览器中window是有XMLHttpRequest这个属性的,而IE6.0或IE5.5
+    没有这个属性，使用window.ActiveXObject替代，且两者的生成方式也是不一样的。
+    */
     if (window.XMLHttpRequest) {
         xhr = new XMLHttpRequest();
     }       
     else {
-        xhr = new ActiveXObject("Micrisoft.XHRHttp");
+        xhr = new ActiveXObject("Microsoft.XHRHttp");
     }
     method = method.toUpperCase();
     if (method == 'GET') {
